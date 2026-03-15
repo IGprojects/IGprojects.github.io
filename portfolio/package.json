@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:portfolio": "node dist/portfolio/server/server.mjs"
+    "serve:ssr:portfolio": "node dist/portfolio/server/server.mjs",
+    "deploy": "ng build && npx ncp dist/portfolio/browser/index.html dist/portfolio/browser/404.html && cd dist/portfolio/browser && git init -b gh-pages && git add . && git commit -m 'Deploy' && git remote add origin https://github.com/IGprojects/IGprojects.github.io.git && git push origin gh-pages --force && cd ../../../"
   },
   "private": true,
   "packageManager": "npm@11.6.0",
