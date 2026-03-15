@@ -1,50 +1,52 @@
 <div class="min-h-screen bg-white dark:bg-dark-bg text-gray-900 dark:text-gray-100 transition-colors duration-300 font-sans">
   
   <!-- Navigation Bar -->
-  <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-dark-bg/80 backdrop-blur border-b border-gray-200 dark:border-dark-border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-dark-bg/80 backdrop-blur border-b border-gray-200 dark:border-dark-border">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
       <div class="flex justify-between h-16 items-center">
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center gap-2">
-          <div class="text-2xl font-display font-bold drop-shadow-[0_0_8px_rgba(0,243,255,0.8)] cursor-pointer" onclick="window.scrollTo(0,0)">
+          <div class="text-2xl font-display font-bold drop-shadow-[0_0_8px_rgba(0,243,255,0.8)] cursor-pointer" onclick="window.scrollTo(0,0)" role="button" aria-label="Scroll to top">
             <span class="text-neon-cyan">IG</span><span class="text-gray-900 dark:text-white">PROJECTS</span>
           </div>
         </div>
 
           <!-- Desktop Navigation -->
           <ul class="hidden md:flex items-center space-x-8 font-mono text-sm tracking-wider">
-            <li><a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors">{{ langService.translate('NAV_ABOUT')() }}</a></li>
-            <li><a href="#experience" class="text-gray-600 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors">{{ langService.translate('NAV_EXPERIENCE')() }}</a></li>
-            <li><a href="#education" class="text-gray-600 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors">{{ langService.translate('NAV_EDUCATION')() }}</a></li>
-            <li><a href="#projects" class="text-gray-600 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors">{{ langService.translate('NAV_PROJECTS')() }}</a></li>
-            <li><a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors">{{ langService.translate('NAV_CONTACT')() }}</a></li>
+            <li><a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors" aria-label="Go to About section">{{ langService.translate('NAV_ABOUT')() }}</a></li>
+            <li><a href="#experience" class="text-gray-600 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors" aria-label="Go to Experience section">{{ langService.translate('NAV_EXPERIENCE')() }}</a></li>
+            <li><a href="#education" class="text-gray-600 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors" aria-label="Go to Education section">{{ langService.translate('NAV_EDUCATION')() }}</a></li>
+            <li><a href="#projects" class="text-gray-600 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors" aria-label="Go to Projects section">{{ langService.translate('NAV_PROJECTS')() }}</a></li>
+            <li><a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors" aria-label="Go to Contact section">{{ langService.translate('NAV_CONTACT')() }}</a></li>
           </ul>
           <!-- Toggles -->
           <div class="flex items-center gap-4 border-l border-gray-300 dark:border-dark-border pl-4">
             
             <!-- Lang Toggle -->
             <button (click)="langService.toggleLanguage()"
-                    class="font-bold text-sm tracking-widest px-2 py-1 border border-transparent hover:border-gray-400 dark:hover:border-neon-purple rounded transition">
+                    class="font-bold text-sm tracking-widest px-2 py-1 border border-transparent hover:border-gray-400 dark:hover:border-neon-purple rounded transition"
+                    [aria-label]="'Switch language, current: ' + langService.currentLang()">
               {{ langService.currentLang() | uppercase }}
             </button>
 
             <!-- Theme Toggle -->
             <button (click)="themeService.toggleTheme()"
-                    class="p-2 rounded-full border border-gray-300 dark:border-neon-cyan hover:bg-gray-100 dark:hover:bg-dark-card transition">
+                    class="p-2 rounded-full border border-gray-300 dark:border-neon-cyan hover:bg-gray-100 dark:hover:bg-dark-card transition"
+                    aria-label="Toggle dark/light mode">
               <!-- Moon icon for dark mode (show when light) -->
-              <svg *ngIf="!isDark" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg *ngIf="!isDark" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
               </svg>
               <!-- Sun icon for light mode (show when dark) -->
-              <svg *ngIf="isDark" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-neon-cyan drop-shadow-[0_0_5px_rgba(0,243,255,1)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg *ngIf="isDark" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-neon-cyan drop-shadow-[0_0_5px_rgba(0,243,255,1)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
             </button>
           </div>
         <!-- End toggles/nav wrapping -->
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <!-- Router Outlet injects pages/components here -->
   <main class="pt-16">

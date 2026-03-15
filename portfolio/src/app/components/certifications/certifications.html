@@ -7,14 +7,16 @@
       <!-- Header & Search -->
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-10 w-full relative z-20">
         <div class="flex items-center gap-4">
-          <svg class="w-8 h-8 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-          <h3 class="text-3xl font-display font-bold text-gray-900 dark:text-white uppercase tracking-wider">Certifications</h3>
+          <svg class="w-8 h-8 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+          <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white uppercase tracking-wider">Certifications</h2>
         </div>
 
         <!-- Search Input -->
         <div class="relative w-full md:w-72">
+          <label for="cert-search" class="sr-only">Search certifications</label>
           <input 
             type="text" 
+            id="cert-search"
             placeholder="Search certifications..." 
             (input)="updateSearch($event)"
             class="w-full bg-gray-100 dark:bg-[#0f0f13] border border-gray-400 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded focus:ring-neon-cyan focus:border-neon-cyan block pl-10 p-2.5 outline-none transition-colors"
@@ -28,35 +30,39 @@
       </div>
 
       <!-- Scrolling Marquee Slider (Shown when NO search query) -->
-      <div *ngIf="!searchQuery()" class="relative w-full overflow-hidden flex items-center h-20 group z-10 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+      <div *ngIf="!searchQuery()" class="relative w-full overflow-hidden flex items-center h-20 group z-10 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]" aria-label="Certifications slider">
         <div class="flex animate-marquee group-hover:[animation-play-state:paused] whitespace-nowrap gap-6 w-max">
           <!-- First set of items -->
           <ng-container *ngFor="let cert of filteredCerts()">
             <a [attr.href]="cert.link ? cert.link : null" [attr.target]="cert.link ? '_blank' : null" 
+               rel="noopener noreferrer"
+               [attr.aria-label]="'View certification: ' + cert.title + ' from ' + cert.issuer"
                [ngClass]="{'cursor-pointer hover:border-neon-cyan dark:hover:border-neon-cyan hover:shadow-[0_0_10px_rgba(0,243,255,0.2)]': cert.link, 'cursor-default': !cert.link}"
                class="inline-flex items-center gap-3 bg-gray-100 dark:bg-black/50 border border-gray-300 dark:border-gray-800 px-5 py-2 rounded-full transition-all group/cert">
               
-              <span class="text-neon-cyan drop-shadow-[0_0_5px_rgba(0,243,255,0.8)]">></span>
+              <span class="text-neon-cyan drop-shadow-[0_0_5px_rgba(0,243,255,0.8)]" aria-hidden="true">></span>
               <div class="flex flex-col">
                 <span class="text-sm font-bold text-gray-800 dark:text-gray-200">{{ cert.title }}</span>
                 <span class="text-xs font-mono text-gray-500 dark:text-gray-400">{{ cert.issuer }}</span>
               </div>
               <!-- External Link Icon -->
-              <svg *ngIf="cert.link" class="w-4 h-4 text-gray-400 group-hover/cert:text-neon-cyan ml-2 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              <svg *ngIf="cert.link" class="w-4 h-4 text-gray-400 group-hover/cert:text-neon-cyan ml-2 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
           </ng-container>
           <!-- Duplicate set for seamless looping -->
           <ng-container *ngFor="let cert of filteredCerts()">
             <a [attr.href]="cert.link ? cert.link : null" [attr.target]="cert.link ? '_blank' : null" 
+               rel="noopener noreferrer"
+               [attr.aria-label]="'View certification: ' + cert.title + ' from ' + cert.issuer"
                [ngClass]="{'cursor-pointer hover:border-neon-cyan dark:hover:border-neon-cyan hover:shadow-[0_0_10px_rgba(0,243,255,0.2)]': cert.link, 'cursor-default': !cert.link}"
                class="inline-flex items-center gap-3 bg-gray-100 dark:bg-black/50 border border-gray-300 dark:border-gray-800 px-5 py-2 rounded-full transition-all group/cert">
               
-              <span class="text-neon-cyan drop-shadow-[0_0_5px_rgba(0,243,255,0.8)]">></span>
+              <span class="text-neon-cyan drop-shadow-[0_0_5px_rgba(0,243,255,0.8)]" aria-hidden="true">></span>
               <div class="flex flex-col">
                 <span class="text-sm font-bold text-gray-800 dark:text-gray-200">{{ cert.title }}</span>
                 <span class="text-xs font-mono text-gray-500 dark:text-gray-400">{{ cert.issuer }}</span>
               </div>
-              <svg *ngIf="cert.link" class="w-4 h-4 text-gray-400 group-hover/cert:text-neon-cyan ml-2 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              <svg *ngIf="cert.link" class="w-4 h-4 text-gray-400 group-hover/cert:text-neon-cyan ml-2 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
           </ng-container>
         </div>
@@ -66,15 +72,17 @@
       <div *ngIf="searchQuery()" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 relative z-10 max-h-80 overflow-y-auto pr-2 custom-scrollbar">
         <a *ngFor="let cert of filteredCerts()" 
            [attr.href]="cert.link ? cert.link : null" [attr.target]="cert.link ? '_blank' : null"
+           rel="noopener noreferrer"
+           [attr.aria-label]="'View certification: ' + cert.title + ' from ' + cert.issuer"
            [ngClass]="{'cursor-pointer hover:border-neon-cyan dark:hover:border-neon-cyan hover:shadow-[0_0_10px_rgba(0,243,255,0.1)]': cert.link, 'cursor-default': !cert.link}"
            class="flex items-start gap-3 p-3 bg-gray-100 dark:bg-black/30 border border-gray-300 dark:border-gray-800 rounded transition-all group/cert">
           
-          <span class="text-neon-cyan mt-1">></span>
+          <span class="text-neon-cyan mt-1" aria-hidden="true">></span>
           <div class="flex flex-col flex-1">
             <span class="text-sm font-bold text-gray-800 dark:text-gray-200 group-hover/cert:text-neon-cyan transition-colors">{{ cert.title }}</span>
             <span class="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">{{ cert.issuer }}</span>
           </div>
-          <svg *ngIf="cert.link" class="w-4 h-4 mt-1 text-gray-400 group-hover/cert:text-neon-cyan transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          <svg *ngIf="cert.link" class="w-4 h-4 mt-1 text-gray-400 group-hover/cert:text-neon-cyan transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
         </a>
         
         <!-- Empty State -->

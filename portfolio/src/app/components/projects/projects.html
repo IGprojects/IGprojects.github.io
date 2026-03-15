@@ -19,10 +19,12 @@
              [style.transform]="'translateX(-' + (currentIndex() * (100 / (projects.length >= 3 ? 3 : 1))) + '%)'">
           
           <!-- Slide Item -->
-          <div *ngFor="let proj of projects; let i = index" 
-               class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-4">
+          <article *ngFor="let proj of projects; let i = index" 
+                class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-4"
+                [attr.aria-label]="'Project: ' + langService.translate(proj.nameKey)()">
             
-            <a [href]="proj.link" target="_blank" 
+            <a [href]="proj.link" target="_blank" rel="noopener noreferrer"
+               [attr.aria-label]="'View ' + langService.translate(proj.nameKey)() + ' on GitHub'"
                class="block h-full bg-gray-50 dark:bg-dark-card border border-gray-200 dark:border-dark-border overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] relative group"
                [ngClass]="{
                  'hover:shadow-neon-cyan dark:hover:border-neon-cyan': proj.color === 'neon-cyan',
@@ -35,7 +37,7 @@
               <div class="h-48 bg-gray-200 dark:bg-gray-800 relative overflow-hidden">
                 <div class="absolute inset-0 z-10 opacity-30 pointer-events-none"
                      style="background-image: linear-gradient(var(--tw-dark-border) 1px, transparent 1px); background-size: 100% 20px;"></div>
-                <img [src]="proj.image" [alt]="langService.translate(proj.nameKey)()" 
+                <img [src]="proj.image" [alt]="'Screenshot of ' + langService.translate(proj.nameKey)()" 
                      class="w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-700" />
               </div>
               
@@ -76,29 +78,32 @@
                      'bg-neon-blue': proj.color === 'neon-blue'
                    }"></div>
             </a>
-          </div>
+          </article>
         </div>
       </div>
 
       <!-- Navigation Arrows -->
-      <button (click)="prev()" 
+      <button (click)="prev()" aria-label="Previous project"
               class="absolute -left-6 top-1/2 -translate-y-1/2 z-20 p-2 text-gray-400 hover:text-white transition-all hidden lg:block">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
-      <button (click)="next()" 
+      <button (click)="next()" aria-label="Next project"
               class="absolute -right-6 top-1/2 -translate-y-1/2 z-20 p-2 text-gray-400 hover:text-white transition-all hidden lg:block">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
       <!-- Dots Indicator -->
-      <div class="flex justify-center gap-2 mt-4">
+      <div class="flex justify-center gap-2 mt-4" role="tablist">
         <button *ngFor="let p of projects; let i = index" 
                 (click)="goToSlide(i)"
+                [attr.aria-label]="'Go to slide ' + (i + 1)"
+                role="tab"
+                [attr.aria-selected]="i === currentIndex()"
                 class="w-2 h-2 rounded-full transition-all duration-300"
                 [ngClass]="{
                   'bg-neon-cyan scale-125 shadow-neon-cyan': i === currentIndex(),

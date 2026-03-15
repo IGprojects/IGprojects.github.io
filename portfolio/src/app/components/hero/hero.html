@@ -11,7 +11,7 @@
 
   <!-- Central Content -->
   <div class="relative z-20 text-center max-w-3xl px-4 pointer-events-none">
-    <div class="text-xl md:text-3xl font-mono text-neon-cyan mb-2 font-bold tracking-widest drop-shadow-[0_0_8px_rgba(0,243,255,0.8)] pointer-events-auto">IGNASI FERRÉS IGLESIAS</div>
+    <div class="text-xl md:text-3xl font-mono text-neon-cyan mb-2 font-bold tracking-widest drop-shadow-[0_0_8px_rgba(0,243,255,0.8)] pointer-events-auto" role="doc-subtitle">IGNASI FERRÉS IGLESIAS</div>
     <h1 class="text-5xl md:text-7xl font-display font-black mb-6 tracking-tighter uppercase 
              text-gray-900 dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
       {{ langService.translate('HERO_TITLE')() }}
@@ -21,7 +21,8 @@
     </p>
 
     <div class="flex justify-center gap-6 pointer-events-auto">
-      <a href="#projects" class="group relative px-8 py-3 font-bold text-white bg-neon-purple hover:bg-neon-magenta shadow-[0_0_15px_rgba(188,19,254,0.6)] hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] transition-all uppercase tracking-wider rounded-sm overflow-hidden border border-neon-magenta">
+      <a href="#projects" class="group relative px-8 py-3 font-bold text-white bg-neon-purple hover:bg-neon-magenta shadow-[0_0_15px_rgba(188,19,254,0.6)] hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] transition-all uppercase tracking-wider rounded-sm overflow-hidden border border-neon-magenta"
+         aria-label="View my projects">
         <span class="relative z-10">{{ langService.translate('NAV_PROJECTS')() }}</span>
         <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
       </a>
@@ -31,12 +32,12 @@
   <!-- Floating Images / Orbiting Nodes -->
   
   <!-- INNER ORBIT (w-[800px] radius=400px) -->
-  <div class="hidden lg:block absolute top-1/2 left-1/2 w-0 h-0 z-10 animate-spin-medium">
+  <div class="hidden lg:block absolute top-1/2 left-1/2 w-0 h-0 z-10 animate-spin-medium" aria-hidden="true">
     
     <!-- AR Shop (0 degrees) -->
     <div class="absolute left-[400px] top-0 -translate-x-1/2 -translate-y-1/2">
       <div class="flex items-center justify-center w-36 h-36 rounded-full transition-all duration-700 shadow-[0_0_15px_rgba(0,243,255,0.3)] hover:shadow-neon-cyan border border-gray-800 bg-dark-card hover:scale-110 animate-spin-reverse-medium group">
-        <img src="assets/img/LOGOS-LANDING/logo_ARSHOP-removebg-preview.png" alt="AR Shop Project" class="w-full h-full p-4 object-contain scale-[1.3] opacity-90 group-hover:opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] transition-transform duration-700" />
+        <img src="assets/img/LOGOS-LANDING/logo_ARSHOP-removebg-preview.png" alt="Logo for AR Shop project" class="w-full h-full p-4 object-contain scale-[1.3] opacity-90 group-hover:opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] transition-transform duration-700" />
         <div class="absolute -bottom-1 right-2 w-3 h-3 bg-neon-cyan rounded-full shadow-neon-cyan animate-glow-slow"></div>
       </div>
     </div>
@@ -44,7 +45,7 @@
     <!-- Spotify Backup (180 degrees) -->
     <div class="absolute left-[-400px] top-0 -translate-x-1/2 -translate-y-1/2">
       <div class="flex items-center justify-center w-36 h-36 rounded-full transition-all duration-700 shadow-[0_0_15px_rgba(188,19,254,0.3)] hover:shadow-neon-purple border border-gray-800 bg-dark-card hover:scale-110 animate-spin-reverse-medium group">
-        <img src="assets/img/LOGOS-LANDING/logo_SPOTIFYBACKUP-removebg-preview.png" alt="Spotify Backup Project" class="w-full h-full p-4 object-contain scale-[1.3] opacity-90 group-hover:opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] transition-transform duration-700" />
+        <img src="assets/img/LOGOS-LANDING/logo_SPOTIFYBACKUP-removebg-preview.png" alt="Logo for Spotify Backup project" class="w-full h-full p-4 object-contain scale-[1.3] opacity-90 group-hover:opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] transition-transform duration-700" />
         <div class="absolute top-2 right-1 w-3 h-3 bg-neon-purple rounded-full shadow-neon-purple animate-glow-slow"></div>
       </div>
     </div>
@@ -52,12 +53,12 @@
   </div>
 
   <!-- OUTER ORBIT (w-[1200px] radius=600px) -->
-  <div class="hidden lg:block absolute top-1/2 left-1/2 w-0 h-0 z-10 animate-spin-slow">
+  <div class="hidden lg:block absolute top-1/2 left-1/2 w-0 h-0 z-10 animate-spin-slow" aria-hidden="true">
     
     <!-- Maths Island (90 degrees -> left-[0px] top-[600px]) -->
     <div class="absolute left-0 top-[600px] -translate-x-1/2 -translate-y-1/2">
       <div class="flex items-center justify-center w-36 h-36 rounded-full transition-all duration-700 shadow-[0_0_15px_rgba(255,0,255,0.3)] hover:shadow-neon-magenta border border-gray-800 bg-dark-card hover:scale-110 animate-spin-reverse-slow group">
-        <img src="assets/img/LOGOS-LANDING/logo_MATHSISLAND-removebg-preview.png" alt="Maths Island Project" class="w-full h-full p-2 object-contain scale-[1.3] opacity-90 group-hover:opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] transition-transform duration-700" />
+        <img src="assets/img/LOGOS-LANDING/logo_MATHSISLAND-removebg-preview.png" alt="Logo for Maths Island project" class="w-full h-full p-2 object-contain scale-[1.3] opacity-90 group-hover:opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] transition-transform duration-700" />
         <div class="absolute top-1 left-2 w-3 h-3 bg-neon-magenta rounded-full shadow-neon-magenta animate-glow-slow"></div>
       </div>
     </div>
@@ -65,7 +66,7 @@
     <!-- Transpotravel (270 degrees -> left-[0px] top-[-600px]) -->
     <div class="absolute left-0 top-[-600px] -translate-x-1/2 -translate-y-1/2">
       <div class="flex items-center justify-center w-40 h-40 rounded-full transition-all duration-700 shadow-[0_0_15px_rgba(31,81,255,0.3)] hover:shadow-neon-blue border border-gray-800 bg-dark-card hover:scale-110 animate-spin-reverse-slow group">
-        <img src="assets/img/LOGOS-LANDING/logo_TRANSPOTRAVEL-removebg-preview.png" alt="Transpotravel Project" class="w-full h-full p-3 object-contain scale-[1.5] opacity-90 group-hover:opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] transition-transform duration-700" />
+        <img src="assets/img/LOGOS-LANDING/logo_TRANSPOTRAVEL-removebg-preview.png" alt="Logo for Transpotravel project" class="w-full h-full p-3 object-contain scale-[1.5] opacity-90 group-hover:opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] transition-transform duration-700" />
         <div class="absolute bottom-2 left-2 w-3 h-3 bg-neon-blue rounded-full shadow-neon-blue animate-glow-slow"></div>
       </div>
     </div>
