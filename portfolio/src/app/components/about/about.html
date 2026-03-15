@@ -1,0 +1,57 @@
+<section id="about" class="py-24 bg-gray-50 dark:bg-[#0a0a0c]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    
+    <!-- Background Decor -->
+    <div class="absolute top-0 right-0 w-64 h-64 bg-neon-magenta rounded-full blur-[100px] opacity-10 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-neon-cyan rounded-full blur-[100px] opacity-10 pointer-events-none"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      
+      <!-- Image / Graphic Side -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-neon-blue rounded-lg blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+        <div class="relative rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#050505] p-2 z-10">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="About Me" class="w-full h-auto rounded grayscale group-hover:grayscale-0 transition-all duration-500" />
+          
+          <!-- Scanline Effect overlay -->
+          <div class="absolute inset-0 z-20 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-30"></div>
+        </div>
+      </div>
+
+      <!-- Text Side -->
+      <div class="relative z-10">
+        <h2 class="text-4xl md:text-5xl font-display font-black uppercase tracking-widest text-gray-900 dark:text-white mb-6 drop-shadow-sm dark:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+          {{ langService.translate('ABOUT_TITLE')() }}
+        </h2>
+        <div class="w-16 h-1 bg-neon-magenta shadow-neon-magenta mb-8"></div>
+        
+        <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-light mb-4">
+          {{ langService.translate('ABOUT_DESC')() }}
+        </p>
+        
+        <p class="text-sm font-mono text-gray-500 dark:text-gray-400 mb-2">
+          <span class="text-neon-cyan">> Location:</span> {{ langService.translate('ABOUT_LOCATION')() }}
+        </p>
+        <p class="text-sm font-mono text-gray-500 dark:text-gray-400 mb-8">
+          <span class="text-neon-cyan">> {{ langService.translate('ABOUT_LANGS')() }}</span>
+        </p>
+
+        <!-- Tech Stack Pills -->
+        <div class="flex flex-wrap gap-3 mb-8">
+          <span class="px-4 py-2 text-sm font-mono border border-neon-cyan text-neon-cyan bg-neon-cyan/10 rounded" title="Frontend">Angular / TypeScript / HTML5 / CSS3 / Tailwind / Bootstrap</span>
+          <span class="px-4 py-2 text-sm font-mono border border-neon-magenta text-neon-magenta bg-neon-magenta/10 rounded" title="Backend">Java / NodeJS / Python / PHP / C# / C++</span>
+          <span class="px-4 py-2 text-sm font-mono border border-neon-purple text-neon-purple bg-neon-purple/10 rounded" title="Database">MySQL / MongoDB / PostgreSQL</span>
+          <span class="px-4 py-2 text-sm font-mono border border-neon-blue text-neon-blue bg-neon-blue/10 rounded" title="Tools">Git / Docker / Unity / Linux / Active Directory</span>
+        </div>
+
+        <a href="#" class="inline-flex items-center gap-3 px-6 py-3 border border-transparent hover:border-neon-cyan bg-gray-900 dark:bg-neon-cyan/20 text-white dark:text-neon-cyan font-bold uppercase tracking-wider rounded transition-all hover:shadow-neon-cyan">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          {{ langService.translate('BTN_RESUME')() }}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

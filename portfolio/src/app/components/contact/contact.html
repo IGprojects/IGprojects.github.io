@@ -1,0 +1,67 @@
+<section id="contact" class="py-24 bg-white dark:bg-[#07070a] relative overflow-hidden">
+  
+  <!-- Abstract Neon Node Background -->
+  <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+    <svg class="absolute w-[800px] h-[800px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 dark:opacity-20" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="0.5" class="text-neon-blue" />
+      <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="0.5" class="text-neon-cyan" />
+      <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-width="0.5" class="text-neon-magenta" />
+      <!-- Nodes -->
+      <circle cx="50" cy="10" r="1.5" fill="currentColor" class="text-neon-blue drop-shadow-[0_0_5px_rgba(31,81,255,1)]" />
+      <circle cx="90" cy="50" r="1.5" fill="currentColor" class="text-neon-cyan drop-shadow-[0_0_5px_rgba(0,243,255,1)]" />
+      <circle cx="10" cy="50" r="1.5" fill="currentColor" class="text-neon-magenta drop-shadow-[0_0_5px_rgba(255,0,255,1)]" />
+    </svg>
+  </div>
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-display font-black uppercase tracking-widest text-gray-900 dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+        {{ langService.translate('CONTACT_TITLE')() }}
+      </h2>
+      <div class="mt-4 w-24 h-1 bg-neon-blue shadow-neon-blue mx-auto"></div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="bg-gray-50 dark:bg-dark-card border border-gray-200 dark:border-dark-border p-8 rounded-lg shadow-lg dark:shadow-[0_0_30px_rgba(31,81,255,0.1)]">
+      <form #contactForm="ngForm" (ngSubmit)="sendEmail(contactForm)" class="space-y-6">
+        
+        <!-- Honeypot Field (Anti-spam) -->
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <!-- Name -->
+        <div class="relative group">
+          <input type="text" id="name" name="name" ngModel required class="block w-full bg-transparent border-b-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 px-0 py-2 focus:outline-none focus:border-neon-cyan dark:focus:border-neon-cyan focus:ring-0 transition-colors peer" placeholder=" ">
+          <label for="name" class="absolute left-0 top-2 text-gray-500 dark:text-gray-400 font-mono text-sm uppercase tracking-wider transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-neon-cyan peer-valid:-top-4 peer-valid:text-xs">Nom / Name</label>
+        </div>
+
+        <!-- Email -->
+        <div class="relative group">
+          <input type="email" id="email" name="email" ngModel required class="block w-full bg-transparent border-b-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 px-0 py-2 focus:outline-none focus:border-neon-magenta dark:focus:border-neon-magenta focus:ring-0 transition-colors peer" placeholder=" ">
+          <label for="email" class="absolute left-0 top-2 text-gray-500 dark:text-gray-400 font-mono text-sm uppercase tracking-wider transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-neon-magenta peer-valid:-top-4 peer-valid:text-xs">Correo / Email</label>
+        </div>
+
+        <!-- Message -->
+        <div class="relative group">
+          <textarea id="message" name="message" ngModel rows="4" required class="block w-full bg-transparent border-b-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 px-0 py-2 focus:outline-none focus:border-neon-purple dark:focus:border-neon-purple focus:ring-0 transition-colors peer resize-none" placeholder=" "></textarea>
+          <label for="message" class="absolute left-0 top-2 text-gray-500 dark:text-gray-400 font-mono text-sm uppercase tracking-wider transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-neon-purple peer-valid:-top-4 peer-valid:text-xs">Mensaje / Message</label>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4 text-center">
+          <button type="submit" [disabled]="!contactForm.form.valid || isSubmitting()" class="group relative px-10 py-4 font-bold text-gray-900 dark:text-white border-2 border-gray-900 dark:border-neon-cyan hover:bg-gray-900 dark:hover:bg-neon-cyan hover:text-white dark:hover:text-[#050505] transition-all uppercase tracking-widest rounded-sm overflow-hidden dark:hover:shadow-[0_0_20px_rgba(0,243,255,0.6)] disabled:opacity-50 disabled:cursor-not-allowed min-w-[200px]">
+            <span class="relative z-10">
+              <span *ngIf="!isSubmitting()">{{ langService.translate('CONTACT_SEND')() }}</span>
+              <span *ngIf="isSubmitting()" class="flex items-center gap-2">
+                <svg class="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                ENVIANDO...
+              </span>
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

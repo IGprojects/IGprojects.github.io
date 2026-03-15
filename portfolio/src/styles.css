@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #00f3ff;
+  border-radius: 10px;
+}
+
+/* Marquee Animation for Certifications */
+@keyframes marquee-slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 1.5rem)); } /* Accounts for gap */
+}
+
+.animate-marquee {
+  animation: marquee-slide 60s linear infinite;
+}
+
