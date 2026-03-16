@@ -15,7 +15,7 @@ export const TRANSLATIONS = {
     ABOUT_TITLE: 'About Me',
     ABOUT_DESC: 'Passionate Full Stack developer, always exploring new technologies and challenges that allow me to grow. I combine logic and creativity to create efficient and impactful products. I enjoy every line of code along the way.',
     ABOUT_LOCATION: 'Palafrugell, Catalonia',
-    ABOUT_LANGS: 'Languages: Catalan, Spanish, English (B2)',
+    ABOUT_LANGS: 'Languages: Catalan, Spanish, English (B2), Japanese (Learning)',
     BTN_RESUME: 'Download Resume',
 
     // Experience
@@ -111,7 +111,7 @@ export const TRANSLATIONS = {
     ABOUT_TITLE: 'Sobre Mi',
     ABOUT_DESC: 'Apasionado desarrollador Full Stack, siempre explorando nuevas tecnologías y retos que me permitan crecer. Combino lógica y creatividad para crear productos eficientes y con impacto. Disfruto de cada línea de código del camino.',
     ABOUT_LOCATION: 'Palafrugell, Cataluña',
-    ABOUT_LANGS: 'Idiomas: Catalán, Español, Inglés (B2)',
+    ABOUT_LANGS: 'Idiomas: Catalán, Español, Inglés (B2), Japonés (Aprendiendo)',
     BTN_RESUME: 'Descargar CV',
 
     // Experience
