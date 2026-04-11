@@ -16,7 +16,7 @@
       <!-- Viewport -->
       <div class="overflow-hidden py-10">
         <div class="flex transition-transform duration-700 ease-in-out"
-             [style.transform]="'translateX(-' + (currentIndex() * (100 / (projects.length >= 3 ? 3 : 1))) + '%)'">
+             [style.transform]="'translateX(-' + (currentIndex() * (100 / itemsPerPage())) + '%)'">
           
           <!-- Slide Item -->
           <article *ngFor="let proj of projects; let i = index" 
@@ -38,7 +38,7 @@
                 <div class="absolute inset-0 z-10 opacity-30 pointer-events-none"
                      style="background-image: linear-gradient(var(--tw-dark-border) 1px, transparent 1px); background-size: 100% 20px;"></div>
                 <img [src]="proj.image" [alt]="'Screenshot of ' + langService.translate(proj.nameKey)()" 
-                     class="w-full h-full object-contain p-6 transform group-hover:scale-110 transition-transform duration-700" />
+                     [ngClass]="'w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-700 ' + proj.imageClass" />
               </div>
               
               <div class="p-6">
